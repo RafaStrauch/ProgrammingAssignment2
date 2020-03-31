@@ -15,17 +15,23 @@ makeCacheMatrix <- function(x = matrix()) {
         getinvers = getinvers )
 }
 
-## Write a short comment describing this function
-## Answer: to recalculate the matrix on every system call
+## Write a short comment describing this function:
+## Answer:
 cacheSolve <- function(x, ...) {
+ # Return a matrix inverse of "x":
   m <- x$getinvers()
+ 
+ # Return the inverse if its already set:
     if (!is.null(m)) {
     message("getting cached matrix")
     return (m)
   } 
   matX <- x$get()
-  ## Calculate the inverse of a matrix
+ 
+  # Calculate the inverse of a matrix
   m <- solve(matX, ...)
+  
+ # Set the inverse to the object
   x$setinvers(m)
   m
 }
